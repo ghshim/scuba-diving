@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 
 def frequency_analysis(word_token):
-    #상위 30개까지만
+    #상위 30개까지만 확인
     frequency_series = pd.Series(word_token).value_counts().head(30)
 
     sns.set(rc={'figure.figsize': (30, 15)})

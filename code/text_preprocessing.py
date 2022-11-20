@@ -41,7 +41,7 @@ def text_preprocessing():
     stop_words = set(stopwords.words("english"))
     word_token = [i for i in word_token if i not in stop_words]
 
-    #어근 동일화 -> 어간 추출에서 Porter어간 추출기가 정확도가 높다고 함 // 표제어 추출도 가능한데 정확도가 더 높은 것 선택하면 될 듯
+    #어근 동일화
     stemmer = PorterStemmer()
     word_token = [stemmer.stem(i) for i in word_token]
 
