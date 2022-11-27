@@ -1,6 +1,5 @@
 import re
 import csv
-import nltk
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
@@ -46,3 +45,5 @@ def text_preprocessing():
     word_token = [stemmer.stem(i) for i in word_token]
 
     return word_token
+
+
