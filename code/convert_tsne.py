@@ -43,9 +43,9 @@ def show_tsne():
     path = '../data/scuba_diving_safety.csv'
     papers = extract_text(path)
 
-    cachedStopWords = stopwords.words("english")
-    RegTok = RegexpTokenizer("[\w']{3,}")
-    english_stops = set(stopwords.words('english'))
+    #cachedStopWords = stopwords.words("english")
+    #RegTok = RegexpTokenizer("[\w']{3,}")
+    #english_stops = set(stopwords.words('english'))
 
     tfidf = TfidfVectorizer(tokenizer=tokenizer)
     papers_tfidf = tfidf.fit_transform(papers)

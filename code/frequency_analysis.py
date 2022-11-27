@@ -8,4 +8,5 @@ def frequency_analysis(word_token):
     sns.set(rc={'figure.figsize': (30, 15)})
     splot = sns.barplot(y=frequency_series.index, x=frequency_series.values, orient='h')
     sfig = splot.get_figure()
+
     sfig.savefig('../figure/scuba_diving_safety.png')
