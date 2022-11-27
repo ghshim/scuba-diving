@@ -2,7 +2,7 @@
 데이터 정보
 '''
 
-def data_info(data, dir):
+def data_info(df, dir):
     '''
     전체 데이터의 개수와 데이터를 연도별로 분류하여 각 연도별 데이터의 개수를 dictionary로 리턴
     또한, 연도별 논문의 수를 csv로 변환 및 막대 그래프로 나타낸 후 dir folder에 저장 (x축: 연도, y축: 연도별 데이터 개수)
@@ -19,12 +19,6 @@ def data_info(data, dir):
     csv_path = dir + csv_name; fig_path = dir + fig_name
 
     return total_num, data_year
-
-
-
-def preprocessing():
-
-    return
 
 
 
