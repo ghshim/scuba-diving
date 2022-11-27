@@ -32,7 +32,7 @@ def text2cv(data, dir, top_n):
     '''
     주어진 말뭉치를 Count Vector 변환 후 csv로 변환(전체 데이터) 후 저장
     및 top_n개에 대한 결과를 막대 그래프로 표현 후 저장 (x축: count, y축: word)
-
+ 
     input
 
     output
