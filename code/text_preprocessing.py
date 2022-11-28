@@ -1,5 +1,6 @@
 import re
 import csv
+import pandas as pd
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
@@ -8,17 +9,24 @@ from nltk.corpus import stopwords
 #nltk.download('wordnet')
 #nltk.download('stopwords')
 
-def text_preprocessing():
-    #csv file -> dataset 변환
+# def convert_DF():
+#     df = pd.read_csv("../data/scuba_diving_safety.csv")
+#     data = df['abstract'].to_list()
+#     return data
+
+def extract_texts():
+    # csv file -> dataset 변환
     file = open("../data/scuba_diving_safety.csv", "r", encoding="utf-8")
     rdr = csv.reader(file)
     dataset = []
     for row in rdr:
         dataset.append(row[3])
-    #csv header("abstract") 0번째 요소 list에서 삭제
+    # csv header("abstract") 0번째 요소 list에서 삭제
     dataset.pop(0)
     file.close()
+    return dataset
 
+def text_preprocessing(dataset):
     #문장 토큰화
     sent_token = []
     for i in range(len(dataset)):
