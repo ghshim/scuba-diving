@@ -11,12 +11,12 @@ from frequency_analysis import show_figure_forTfidf
 from convert_tsne import show_tsne
 if __name__ == "__main__":
     #frequency_analysis
-    # data = extract_texts()
-    # word_token = text_preprocessing(data)
-    # frequency_obj = frequency_analysis(word_token)
-    # show_figure_forFrequency(frequency_obj)
+    data = extract_texts()
+    word_token = text_preprocessing(data)
+    frequency_obj = frequency_analysis(word_token)
+    show_figure_forFrequency(frequency_obj)
 
     #tfidf_analysis
-    dataset = extract_texts()
-    tfidf_analysis(dataset)
+    #dataset = extract_texts()
+    #tfidf_analysis(dataset)
     #show_figure_forTfidf(n, tfidf_obj)

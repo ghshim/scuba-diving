@@ -6,6 +6,7 @@ def frequency_analysis(word_token):
     #상위 30개까지만 확인
     n = 30
     frequency_series = pd.Series(word_token).value_counts().head(n)
+    print(frequency_series)
     return frequency_series
 
 def tfidf_analysis(dataset):
@@ -19,10 +20,10 @@ def tfidf_analysis(dataset):
     return dict(tfidf_scores)
 
 def show_figure_forFrequency(obj):
-    sns.set(rc={'figure.figsize': (30, 15)})
-    splot = sns.barplot(y=obj.index, x=obj.values, orient='h')
+    #sns.set(rc={'figure.figsize': (30, 15)})
+    splot = sns.barplot(y=obj.index, x=obj.values, orient='h', color='tab:blue')
     sfig = splot.get_figure()
-    sfig.savefig('../figure/scuba_diving_safety_frequency.png')
+    sfig.savefig('../figure/topic3/topic3_users*_Frequency.png')
 
 def show_figure_forTfidf(n, obj):
     sns.set(rc={'figure.figsize': (30, 15)})
