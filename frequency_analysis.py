@@ -1,5 +1,6 @@
 import pandas as pd
 import seaborn as sns
+import csv
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 def frequency_analysis(word_token):
@@ -20,7 +21,7 @@ def tfidf_analysis(dataset):
     return dict(tfidf_scores)
 
 def show_figure_forFrequency(obj):
-    #sns.set(rc={'figure.figsize': (30, 15)})
+    sns.set(rc={'figure.figsize': (30, 15)})
     splot = sns.barplot(y=obj.index, x=obj.values, orient='h', color='tab:blue')
     sfig = splot.get_figure()
     sfig.savefig('../figure/topic3/topic3_users*_Frequency.png')

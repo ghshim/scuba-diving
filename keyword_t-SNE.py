@@ -95,11 +95,11 @@ def main():
         tr_y.append(full_tsne_2[i, 1])
 
     # save frequency tsne values
-    # fq_words, fq_index = get_word_index(fq_path, model)
-    # fq_x = []; fq_y = []
-    # for i in range(len(fq_index)):
-    #     fq_x.append(full_tsne_2[i, 0])
-    #     fq_y.append(full_tsne_2[i, 1])
+    fq_words, fq_index = get_word_index(fq_path, model)
+    fq_x = []; fq_y = []
+    for i in range(len(fq_index)):
+        fq_x.append(full_tsne_2[i, 0])
+        fq_y.append(full_tsne_2[i, 1])
 
     ## draw figures
     fig = plt.figure(figsize=(10, 6))
@@ -122,22 +122,22 @@ def main():
     fig.set_label("Top 30 Keywords by TextRank")
 
     # draw tsne to frequency words
-    # fig = sns.scatterplot(
-    #     x=fq_x, y=fq_y,
-    #     legend="full",
-    #     color='r',
-    #     alpha=1
-    # )
-    # fig.set_label("Top 30 Keywords by Word Frequency Counter")
+    fig = sns.scatterplot(
+        x=fq_x, y=fq_y,
+        legend="full",
+        color='r',
+        alpha=1
+    )
+    fig.set_label("Top 30 Keywords by Word Frequency Counter")
 
     # add textrank words
     for i in range(len(tr_index)):
         fig.text(tr_x[i]+1, tr_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
     # add frequency words
-    # for i in range(len(fq_index)):
-    #     plt.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
+    for i in range(len(fq_index)):
+        plt.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
     
-    # fig.legend(labels=['All Keywords', 'Top 30 Keywords by TextRank', 'Top 30 Keywords by Word Frequency Counter'], bbox_to_anchor = (1,1))
+    fig.legend(labels=['All Keywords', 'Top 30 Keywords by TextRank', 'Top 30 Keywords by Word Frequency Counter'], bbox_to_anchor = (1,1))
 
     # plt.show()
     fig = fig.get_figure()

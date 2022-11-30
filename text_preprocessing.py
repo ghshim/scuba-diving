@@ -16,7 +16,7 @@ from nltk.corpus import stopwords
 
 def extract_texts():
     # csv file -> dataset 변환
-    file = open("../data/topic3/user*.csv", "r", encoding="utf-8")
+    file = open("data/topic3/user*.csv", "r", encoding="utf-8")
     rdr = csv.reader(file)
     dataset = []
     for row in rdr:
