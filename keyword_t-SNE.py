@@ -110,6 +110,8 @@ def main():
         color='gray',
         alpha=0.1
     )
+    fig.set_label("All Keywords")
+
     # draw tsne to textrank words
     fig = sns.scatterplot(
         x=tr_x, y=tr_y,
@@ -117,6 +119,8 @@ def main():
         color='b',
         alpha=1
     )
+    fig.set_label("Top 30 Keywords by TextRank")
+
     # draw tsne to frequency words
     # fig = sns.scatterplot(
     #     x=fq_x, y=fq_y,
@@ -124,6 +128,7 @@ def main():
     #     color='r',
     #     alpha=1
     # )
+    # fig.set_label("Top 30 Keywords by Word Frequency Counter")
 
     # add textrank words
     for i in range(len(tr_index)):
@@ -132,6 +137,8 @@ def main():
     # for i in range(len(fq_index)):
     #     plt.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
     
+    # fig.legend(labels=['All Keywords', 'Top 30 Keywords by TextRank', 'Top 30 Keywords by Word Frequency Counter'], bbox_to_anchor = (1,1))
+
     # plt.show()
     fig = fig.get_figure()
     fig.savefig('./figure' + save_path + filename)
