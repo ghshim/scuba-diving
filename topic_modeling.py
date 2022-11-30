@@ -105,7 +105,7 @@ def show_coherence(corpus, dictionary, start=6, end=15):
 def main():
     filename = '/topic' + save_path[-1] + '_TopicModeling.html'
     df = pd.read_csv(data_path)
-    papers = preprocess.extract_text(df=df)
+    papers = preprocess.extract_text(df)
 
     # token화
     texts = []

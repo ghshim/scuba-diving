@@ -13,7 +13,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 
-sys.path.insert(0, '../')
 import preprocess_csv as preprocess
 
 def tokenizer(text):
@@ -78,8 +77,11 @@ def tsne_graph_target(tsne_2, lim=None):
         palette='muted',
         alpha = 0.7
     )
-    plt.legend(title='Predicted Topic', labels = [0, 1, 2, 3, 4, 5, 6 ,7, 8, 9],loc = 2, bbox_to_anchor = (1,1))
-    tfig.set(title=title, xlabel='X', ylabel='Y')
+    plt.legend(title='Predicted Topic', labels = [i for i in range(1, 11)],loc = 2, bbox_to_anchor = (1,1))
+    tfig.set(xlabel='X', ylabel='Y')
+
+    if title is not None:
+        tfig.set(title=title)
 
     # save figure
     tsne_fig = tfig.get_figure()
@@ -88,7 +90,8 @@ def tsne_graph_target(tsne_2, lim=None):
 
 
 def show_tsne(data_path, save_path='./', n_components=2):
-    papers = preprocess.extract_text(data_path)
+    df = pd.read_csv(data_path)
+    papers = preprocess.extract_text(df)
 
     tfidf = TfidfVectorizer(tokenizer=tokenizer)
     papers_tfidf = tfidf.fit_transform(papers)
@@ -106,7 +109,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="-d input data path(csv) -s save path to store output -t title of figure")
     parser.add_argument('-d', help="input_data_path", required=True)
     parser.add_argument('-s', help="save_path", required=True)
-    parser.add_argument('-t', help="fig_title", required=True)
+    parser.add_argument('-t', help="fig_title")
     
     args = parser.parse_args()
 
