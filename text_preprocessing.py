@@ -9,18 +9,13 @@ from nltk.corpus import stopwords
 #nltk.download('wordnet')
 #nltk.download('stopwords')
 
-# def convert_DF():
-#     df = pd.read_csv("../data/scuba_diving_safety.csv")
-#     data = df['abstract'].to_list()
-#     return data
-
 def extract_texts():
     # csv file -> dataset 변환
     file = open("data/topic3/user*.csv", "r", encoding="utf-8")
     rdr = csv.reader(file)
     dataset = []
     for row in rdr:
-        dataset.append(row[4])
+        dataset.append(row[3])
     # csv header("abstract") 0번째 요소 list에서 삭제
     dataset.pop(0)
     file.close()

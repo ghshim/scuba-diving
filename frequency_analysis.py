@@ -6,8 +6,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 def frequency_analysis(word_token):
     #상위 30개까지만 확인
     n = 30
+
     frequency_series = pd.Series(word_token).value_counts().head(n)
-    print(frequency_series)
+
+    frequency_series.to_csv("./data/topic2/topic2_frequency.csv")
+
+    #print(frequency_series)
     return frequency_series
 
 def tfidf_analysis(dataset):
