@@ -9,7 +9,7 @@ def frequency_analysis(word_token):
 
     frequency_series = pd.Series(word_token).value_counts().head(n)
 
-    frequency_series.to_csv("./data/topic2/topic2_frequency.csv")
+    frequency_series.to_csv("./data/topic3/topic3_frequency.csv")
 
     #print(frequency_series)
     return frequency_series

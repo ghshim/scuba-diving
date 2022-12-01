@@ -15,7 +15,7 @@ def extract_texts():
     rdr = csv.reader(file)
     dataset = []
     for row in rdr:
-        dataset.append(row[3])
+        dataset.append(row[4])
     # csv header("abstract") 0번째 요소 list에서 삭제
     dataset.pop(0)
     file.close()

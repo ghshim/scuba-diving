@@ -9,7 +9,7 @@ if __name__ == "__main__":
     data = extract_texts()
     word_token = text_preprocessing(data)
     frequency_obj = frequency_analysis(word_token)
-    show_figure_forFrequency(frequency_obj)
+    #show_figure_forFrequency(frequency_obj)
 
     #tfidf_analysis
     #dataset = extract_texts()
