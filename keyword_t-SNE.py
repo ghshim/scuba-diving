@@ -13,6 +13,7 @@ from gensim.models import KeyedVectors
 from sklearn.manifold import TSNE
 import seaborn as sns
 
+sys.path.insert(0, '../')
 import preprocess_csv as preprocess
 
 
@@ -67,6 +68,7 @@ def draw_tsne(fig, x, y, color, alpha):
     return fig.get_figure()
 
 
+
 def main():
     filename = '/topic' + save_path[-1] + '_keyword_t-SNE.png'
     df = pd.read_csv(data_path)
@@ -86,25 +88,41 @@ def main():
     full_tsne_2 = tsne_model.fit_transform(model.wv.vectors)
     full_x = full_tsne_2[:, 0]
     full_y = full_tsne_2[:, 1]
+    
 
     # save textrank tsne values
     tr_words, tr_index = get_word_index(tr_path, model)
-    tr_x = []; tr_y = []
-    for i in range(len(tr_index)):
-        tr_x.append(full_tsne_2[i, 0])
-        tr_y.append(full_tsne_2[i, 1])
 
     # save frequency tsne values
     fq_words, fq_index = get_word_index(fq_path, model)
-    fq_x = []; fq_y = []
-    for i in range(len(fq_index)):
-        fq_x.append(full_tsne_2[i, 0])
-        fq_y.append(full_tsne_2[i, 1])
 
+    # find common indexes
+    common = []
+    for i in tr_index:
+        if i in fq_index:
+            common.append(i)
+
+    common_x = []; common_y = []; common_words_ = []
+    for i in common:
+        common_x.append(full_tsne_2[i, 0])
+        common_y.append(full_tsne_2[i, 1])
+
+    tr_x = []; tr_y = []; tr_words_ = []
+    for i in tr_index:
+        if not(i in common):
+            tr_x.append(full_tsne_2[i, 0])
+            tr_y.append(full_tsne_2[i, 1])
+
+    fq_x = []; fq_y = []; fq_words_ = []
+    for i in fq_index:
+        if not(i in common):
+            fq_x.append(full_tsne_2[i, 0])
+            fq_y.append(full_tsne_2[i, 1])
+            
     ## draw figures
     fig = plt.figure(figsize=(10, 6))
     # drwaw tnse to full vectors
-    fig = sns.scatterplot(
+    sns.scatterplot(
         x=full_x, y=full_y,
         legend="full",
         color='gray',
@@ -112,36 +130,50 @@ def main():
     )
     fig.set_label("All Keywords")
 
+    # draw common index 
+    fig = sns.scatterplot(
+        x=common_x, y=common_y,
+        legend="full",
+        color='g',
+        alpha=1
+    )
+    fig.set_label("Common Keywords")
+
     # draw tsne to textrank words
     fig = sns.scatterplot(
         x=tr_x, y=tr_y,
         legend="full",
         color='b',
+        marker='+',
         alpha=1
     )
-    fig.set_label("Top 30 Keywords by TextRank")
+    fig.set_label("Keywords of TextRank")
 
     # draw tsne to frequency words
-    fig = sns.scatterplot(
+    sns.scatterplot(
         x=fq_x, y=fq_y,
         legend="full",
         color='r',
+        marker='+',
         alpha=1
     )
-    fig.set_label("Top 30 Keywords by Word Frequency Counter")
+    fig.set_label("Keywords of Word Frequency Counter")
 
-    # add textrank words
-    for i in range(len(tr_index)):
-        fig.text(tr_x[i]+1, tr_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
-    # add frequency words
-    for i in range(len(fq_index)):
-        plt.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', fontweight='bold', horizontalalignment='left')
-    
-    fig.legend(labels=['All Keywords', 'Top 30 Keywords by TextRank', 'Top 30 Keywords by Word Frequency Counter'], bbox_to_anchor = (1,1))
+    # # add textrank words
+    for i in range(len(common)):
+        fig.text(common_x[i]+1, common_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
+
+    for i in range(len(tr_x)):
+        fig.text(tr_x[i]+1, tr_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
+    # # add frequency words
+    for i in range(len(fq_x)):
+        fig.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
+
+    fig.legend(labels=['All Keywords', 'Common keywords', 'TextRank', 'Word Frequency Counter'], bbox_to_anchor = (1,1))
 
     # plt.show()
     fig = fig.get_figure()
-    fig.savefig('./figure' + save_path + filename)
+    fig.savefig('../figure' + save_path + filename)
 
 
 if __name__ == '__main__':
