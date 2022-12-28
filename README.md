@@ -1,5 +1,5 @@
 # 코드 실행을 위해 필요한 Library
-numpy
+numpyc <br>
 pandas
 argparse
 matplotlib
