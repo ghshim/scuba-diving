@@ -1,3 +1,24 @@
+"""
+빈도수 분석 및 Text Rank 분석으로 선정된 top 30개의 키워드를 벡터로 변환한 후, 이 키워드들에 대한 벡터를 t-SNE 그래프로 표현하여 'figure' 폴더에 저장합니다. 
+   
+Args:
+    -d: data(document) path (required)
+    -s: path to save t-SNE graph (required)
+    -t: title of figure 
+    -tx: path of textrank csv file (required)
+    -fq: path of frequency analysis csv file (required)
+
+Returns: 
+    Saved Path: ./figure/topic name/
+    Name of graph: '/topic' + save_path[-1] + '_keyword_t-SNE.png'
+
+    t-SNE graph that expresses top 30 keywords selected by frequency analysis and TextRank into vectors. 
+    Can understand the relationship between words using this graph.
+
+입력 예시:
+    python keyword_t-SNE.py -d './data/topic2/trust_robot.csv' -s '/topic2' -tx './data/topic2/topic2_Textrank.csv' -fq './data/topic2/topic2_frequency.csv'
+"""
+
 import sys
 import os
 import argparse
@@ -121,6 +142,7 @@ def main():
             
     ## draw figures
     fig = plt.figure(figsize=(10, 6))
+
     # drwaw tnse to full vectors
     sns.scatterplot(
         x=full_x, y=full_y,
@@ -159,21 +181,22 @@ def main():
     )
     fig.set_label("Keywords of Word Frequency Counter")
 
-    # # add textrank words
+    # add textrank words
     for i in range(len(common)):
         fig.text(common_x[i]+1, common_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
 
     for i in range(len(tr_x)):
         fig.text(tr_x[i]+1, tr_y[i]+1, tr_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
-    # # add frequency words
+    
+    # add frequency words
     for i in range(len(fq_x)):
         fig.text(fq_x[i]+1, fq_y[i]+1, fq_words[i], alpha=1, fontsize='x-small', horizontalalignment='center')
 
-    fig.legend(labels=['All Keywords', 'Common keywords', 'TextRank', 'Word Frequency Counter'], bbox_to_anchor = (1,1))
+    fig.legend(labels=['All Keywords', 'Common keywords', 'TextRank', 'Word Frequency Counter'], loc='upper right')
 
     # plt.show()
     fig = fig.get_figure()
-    fig.savefig('../figure' + save_path + filename)
+    fig.savefig('./figure' + save_path + filename)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,22 @@
+"""
+빈도수 분석 및 Text Rank 분석으로 선정된 top 30개의 키워드를 벡터로 변환한 후, 이 키워드들에 대한 벡터를 t-SNE 그래프로 표현하여 'figure' 폴더에 저장합니다. 
+   
+Args:
+    -d: data(document) path (required)
+    -s: path to save t-SNE graph (required)
+    -t: title of figure 
+
+Returns: 
+    Saved Path: ./figure/topic name/
+    Name of graph: '/topic' + save_path[-1] + '_topics_t-SNE.png'
+
+    t-SNE graph that shows the distribution of detailed topics classified by topic modeling. 
+    Can understand the relationship between detailed topics.
+
+입력 예시:
+    python topics_t-SNE.py -d './data/topic2/topic2_predicted.csv' -s '/topic2'
+"""
+
 import sys
 import argparse
 import numpy as np

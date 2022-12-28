@@ -1,3 +1,20 @@
+"""
+주어진 문서에 대해 TextRank 분석을 실시한 후, Rank 점수가 높은 30개의 keyword를 선정하여 해당 단어와 점수를 csv파일로 저장합니다.
+
+Args:
+    -d: data(document) path (required)
+    -s: path to save csv file (required)
+
+Returns:
+    Saved Path: ./figure/topic name/
+    Name of csv: '/topic' + save_path[-1] + '_TextRank.csv'
+
+    CSV file which stores top 30 keywords selected by Textrank analysis and the scores for each keyword
+
+입력 예시:
+    python apply_textrank.py -d './data/topic2/trust_robot.csv' -s '/topic2'
+"""
+
 import sys
 import itertools
 import argparse

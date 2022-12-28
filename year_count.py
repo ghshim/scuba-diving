@@ -1,3 +1,21 @@
+"""
+주어진 논문을 연도별로 카운트하여 csv 파일에 저장하고 이를 그래프를 그려 저장합니다.
+
+Args:
+    -d: data(document) path (required)
+    -s: path to save files (required)
+    -t: title of figure 
+
+Returns:
+    Saved Path: ./data/topic name/ (csv), ./figure/topic name/ (figure)
+    Name of files: '/topic' + save_path[-1] + '_YearCount.csv' (csv), '/topic' + save_path[-1] + '_YearCount.png'
+
+    Count given papers by year and store count by year in csv and graph
+
+입력 예시:
+    python year_count.py -d './data/topic2/trust_robot.csv' -s '/topic2'
+"""
+
 import math
 import argparse
 import numpy as np

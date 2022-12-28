@@ -1,3 +1,22 @@
+"""
+Topic Modeling을 통해 분류된 topic 별 데이터의 개수를 카운트하여 이를 csv 파일로 저장하고 그래프로 표현하여 저장합니다.
+본 프로젝트의 topic_modelng.py을 활용하여 topic modeling을 한 경우, 'topicname_predicted.csv'에 그 결과가 저장됩니다. 
+
+Args:
+    -d: data(document) path (required)
+    -s: path to save t-SNE graph (required)
+    -t: title of figure 
+
+Returns:
+    Saved Path: ./data/topic name/ (csv), ./figure/topic name/ (figure)
+    Name of files: '/topic' + save_path[-1] + '_TopicCount.csv' (csv), '/topic' + save_path[-1] + '_TopicCount.png'
+
+    Count given papers by year and store count by year in csv and graph
+
+입력 예시:
+    python topic_count.py -d './data/topic2/topic2_predicted.csv' -s '/topic2' 
+"""
+
 import math
 import argparse
 import numpy as np

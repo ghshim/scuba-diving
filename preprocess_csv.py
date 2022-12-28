@@ -1,3 +1,7 @@
+'''
+주어진 문서를 전처리하기 위한 함수입니다. 중복되는 데이터를 삭제하기도 하고 문서에서 텍스트를 추출해서 리턴하기도 합니다.
+'''
+
 import pandas as pd
 
 def remove_dup(df1_path, df2_path, dst_path, dst_name, column='title'):
@@ -21,6 +25,7 @@ def remove_dup(df1_path, df2_path, dst_path, dst_name, column='title'):
     result_df.to_csv(dst_path + dst_name)
 
     return result_df
+
 
 def extract_text(df):
     '''

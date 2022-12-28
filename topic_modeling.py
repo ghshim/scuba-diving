@@ -1,3 +1,25 @@
+"""
+Topic Modeling을 통해서 주어진 문서의 세부 토픽(주제)를 분류합니다. 세부 토픽의 개수는 설정할 수 있으며, default는 10입니다.
+158-164번째 줄을 주석해제하면 perplexity와 coherence 결과에 따른 최적의 토픽 개수를 확인할 수 있습니다.
+
+해당 코드는 pyLDAvis 라이브러리를 필요로 합니다.
+설치 명령어: pip install pyLDAvis
+
+Args:
+    -d: data(document) path (required)
+    -s: path to save t-SNE graph (required)
+    -n: the number of topics (default 10)
+
+Returns:
+    Saved Path: ./figure/topic name/ 
+    Name of files: '/topic' + save_path[-1] + '_TopicModeling.html' (html)
+
+    The result of topic modeling using pyLDAvis
+
+입력 예시:
+    python topic_modeling.py -d './data/topic2/trust_robot.csv' -s '/topic2'
+"""
+
 import sys
 import os
 import itertools
@@ -133,6 +155,9 @@ def main():
     print(f'Number of documents: {len(corpus)}')
     print()
 
+    '''
+    If you want to see the best number of topics based on the perplexity and coherence by topic, un-comment below.
+    '''
     # perplexity 및 coherence 
     # per_value, coh_value = show_coherence(corpus, dictionary, start=6, end=15)
 
@@ -164,7 +189,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="-d input data path(csv) -s save path to store output -n number of topics")
     parser.add_argument('-d', help="input_data_path", required=True)
     parser.add_argument('-s', help="save_path", required=True)
-    parser.add_argument('-n', help="num_topics", required=True)
+    parser.add_argument('-n', help="num_topics", default=10)
     
     args = parser.parse_args()
 
