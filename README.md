@@ -1,4 +1,9 @@
-# 코드 실행을 위해 필요한 Library
+본 프로젝트는 스쿠버 다이빙 논문 동향 조사를 위함이며 주어진 논문에 대하여 텍스트 마이닝을 실시합니다. <br>
+키워드 빈도수 분석, 텍스트랭크 분석을 실시하며 해당 결과를 바탕으로 빈도수 및 랭크 점수가 높은 Top 30개의 키워드를 추출하여 이를 t-SNE 그래프에 벡터로 표현합니다. <br>
+또한, 토픽 모델링을 통해 논문 데이터에서 세부 주제를 뽑아내며, 각 세부 토픽의 분포를 확인합니다. <br>
+<br>
+
+## 코드 실행을 위해 필요한 Library
 numpy <br>
 pandas <br>
 argparse <br>
@@ -7,7 +12,8 @@ seaborn <br>
 gensim <br>
 nltk <br>
 
-# 디렉토리 구조
+## 디렉토리 구조
+<pre>
 ㄴtextrank: TextRank를 적용하기 위해 필요한 라이브러리 <br>
 	출처: https://github.com/lovit/textrank/ <br> 
   <br>
@@ -47,7 +53,7 @@ nltk <br>
       topic2와 동일합니다. <br>
    ㄴtopic6 <br>
       topic2와 동일합니다. <br>
- <br>
+<br>
 preprocess_csv.py <br>
 year_count.py <br>
 apply_textrank.py <br>
@@ -58,3 +64,4 @@ topics_t-SNE.py <br>
 text_preprocessing.py <br>
 topic_count.py <br>
 topic.modeling.py <br>
+</pre>
