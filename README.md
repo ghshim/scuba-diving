@@ -4,18 +4,17 @@
 키워드를 추출하여 이를 t-SNE 그래프에 벡터로 표현합니다. 또한, 토픽 모델링을 통해 논문 데이터에서 세부 주제를 
 뽑아내며, 각 세부 토픽의 분포를 확인합니다.
 </pre>
-<br>
 
 ## 개발환경 (코드 실행을 위해 설치가 필요한 Library)
 gensim, pyLDAvis 을 제외한 다른 라이브러리들은 최신 버전을 설치하여도 무관합니다. <br>
-numpy 1.22.4<br>
-pandas 1.4.3<br>
-matplotlib 3.3.4<br>
-seaborn 0.11.2<br>
-nltk 3.7<br>
-sklearn 1.1.1 <br>
-gensim 3.8.3<br>
-pyLDAvis 3.3.1<br>
+ㄴnumpy 1.22.4<br>
+ㄴpandas 1.4.3<br>
+ㄴmatplotlib 3.3.4<br>
+ㄴseaborn 0.11.2<br>
+ㄴnltk 3.7<br>
+ㄴsklearn 1.1.1 <br>
+ㄴgensim 3.8.3<br>
+ㄴpyLDAvis 3.3.1<br>
 
 ## 디렉토리 구조
 <pre>
@@ -70,7 +69,8 @@ pyLDAvis 3.3.1<br>
    ㄴtopic6
       topic2와 동일합니다.
 
-코드에 대한 설명은 각 파일의 첫째줄을 통해 확인하실 수 있습니다.  <br><br>
+코드에 대한 설명은 각 파일의 첫째줄을 통해 확인하실 수 있습니다. 
+
 preprocess_csv.py
 year_count.py
 apply_textrank.py
